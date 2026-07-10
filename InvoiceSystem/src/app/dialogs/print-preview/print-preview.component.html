@@ -1,0 +1,96 @@
+<div class="PrintPreviewContent">
+
+  <div  class="print-btn-wrap">
+    <button class="print-btn" (click)="print()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5">
+        <path d="M4 6V2h8v4" />
+        <rect x="2" y="6" width="12" height="7" rx="1.5" />
+        <path d="M4 10h8M4 13h5" />
+      </svg>
+      Print invoice
+    </button>
+  </div>
+
+  <div class="invoice" id="print-section">
+
+
+    <div class="inv-header">
+      <div class="brand">
+        <div class="brand-dot">
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" /></svg>
+        </div>
+        <span class="brand-name">Rawan Alosaimi</span>
+      </div>
+      <div class="inv-title-block">
+        <h1>Invoice</h1>
+        <div class="inv-meta">
+          Invoice No: INVO-{{invoice.invoiceId}}<br>
+          Date: {{ invoice.dateAndTime | date:'yyyy-MM-dd' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+   
+    <div class="two-col">
+      <div class="party-box">
+        <div class="party-label">Customer</div>
+        <strong>{{invoice.customerName}}</strong>
+      </div>
+      <!--<div class="party-box">
+        <div class="party-label">Deliver to</div>
+        Mobile: <br>
+        Address:
+      </div>-->
+    </div>
+
+    <div class="divider"></div>
+
+    
+    <div class="op-type">Type of operation: Service</div>
+    <div class="order-label">Order details</div>
+
+    
+    <table class="inv-table">
+      <colgroup>
+        <col style="width:48%">
+        <col style="width:8%">
+        <col style="width:14%">
+        <col style="width:20%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Unit price</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of invoice.items">
+          <td>
+            {{item.itemName}}
+          </td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.unitPrice}}</td>
+          <td><strong>{{item.lineTotal}}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="due-note">Due date: 03/03/2023</div>
+
+    <div class="divider"></div>
+
+   
+    <div class="totals-wrap">
+      <div class="totals-box">
+        <div class="total-row"><span>Total due</span><span>{{invoice.totalAmount}} {{invoice.currency}} </span></div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

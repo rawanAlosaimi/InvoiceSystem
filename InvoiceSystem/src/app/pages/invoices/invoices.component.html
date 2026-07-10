@@ -1,0 +1,29 @@
+<div class="topbar">
+  <div>
+    <div class="topbar-title" id="topbar-title">Invoices</div>
+    <div class="topbar-sub" id="topbar-sub">Track your billing</div>
+  </div>
+  <button class="btn primary">+ Add new</button>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Invoice #</th><th>Customer</th><th>Date</th><th>Action</th></tr>
+    </thead>
+    <tbody *ngFor="let invoice of invoicesList; trackBy: trackById">
+      <tr>
+        <td>#{{ invoice.id }}</td>
+        <td>{{ invoice.customerName }}</td>
+        <td>{{ invoice.dateAndTime | date:'yyyy-MM-dd' }}</td>
+        <td>
+          <div class="acts">
+            <button class="btn sm" (click)="openPrintDialog(invoice.id)">Preview & Print</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

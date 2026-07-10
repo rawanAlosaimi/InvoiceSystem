@@ -1,0 +1,46 @@
+<div class="addCustomerDialog">
+  <form [formGroup]="customerForm">
+    <p>{{title}}</p>
+
+    <div class="inputSection">
+      <label>Full name <span>*</span></label>
+      <input placeholder="Rawan Alosaimi" formControlName="name" type="text"
+             [ngClass]="customerForm.get('name')?.invalid && customerForm.get('name')?.touched? 'required' : ''" />
+    </div>
+
+    <div class="inputSection">
+      <label>Email <span>*</span></label>
+      <input placeholder="rawanhalosaimi@gmail.com" formControlName="email" type="email"
+             [ngClass]="customerForm.get('email')?.invalid && customerForm.get('email')?.touched? 'required' : ''" />
+    </div>
+
+    <div class="inputSection">
+      <label>Mobile <span>*</span></label>
+      <input placeholder="05********" formControlName="mobile" type="tel"
+             [ngClass]="customerForm.get('mobile')?.invalid && customerForm.get('mobile')?.touched? 'required' : ''" />
+    </div>
+
+    <!-- Mobile validation -->
+    <div class="requiredMess" *ngIf="customerForm.get('mobile')?.errors?.['pattern']
+            && customerForm.get('mobile')?.touched">
+      Only numbers are allowed
+    </div>
+
+    <div class="requiredMess" *ngIf="mobileNumberErorr">
+      Number must be 10 digits
+    </div>
+    <!-- ************ -->
+
+    <div class="inputSection">
+      <label>Address<span>*</span></label>
+      <input placeholder="Riyadh" formControlName="address" type="text"
+             [ngClass]="customerForm.get('address')?.invalid && customerForm.get('address')?.touched? 'required' : ''" />
+    </div>
+
+
+    <div class="actionSection">
+      <button class="btn primary" type="submit" (click)="save()">Save</button>
+      <button class="btn" (click)="close()">Colse</button>
+    </div>
+  </form>
+</div>

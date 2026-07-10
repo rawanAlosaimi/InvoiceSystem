@@ -1,0 +1,36 @@
+<div class="topbar">
+  <div>
+    <div class="topbar-title" id="topbar-title">Customers</div>
+    <div class="topbar-sub" id="topbar-sub">Manage your customers</div>
+  </div>
+  <button class="btn primary" (click)="openAddCustomerDialog()">+ Add new</button>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Mobile</th><th>Address</th><th>Action</th></tr>
+    </thead>
+    <tbody *ngFor="let customer of customersList; trackBy: trackById">
+      <tr>
+        <td>
+          <div class="tc">
+            <div class="uav"> {{ getFirstTwoLetters(customer.name) }}</div>
+            <div>
+              <div style="font-weight:500">{{customer.name}}</div>
+            </div>
+          </div>
+        </td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.mobile}}</td>
+        <td>{{customer.address}}</td>
+        <td>
+          <div class="acts">
+            <button class="btn sm" (click)="updateCustomerDialog(customer)">Edit</button>
+            <button class="btn sm danger" (click)="deleteCustomerDialog(customer.id)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

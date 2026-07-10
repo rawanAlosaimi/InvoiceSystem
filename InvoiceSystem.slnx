@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="InvoiceSystem/InvoiceSystem.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
