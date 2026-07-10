@@ -44,3 +44,6 @@ The system allows users to manage customer information, create invoices, calcula
 
 ### Database
 - SQL Server
+
+## Author
+Rawan Alosaimi
